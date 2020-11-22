@@ -96,5 +96,36 @@ void add_todo(char *text, int priority) {
 }
 
 void remove_todo(int index) {
+	FILE *file = fopen(FILE_NAME, "r");
+	if(file == NULL) {
+		fprintf(stderr, "Could not open the todo file.\nDebug information: File: %s; Line: %i\n", __FILE__, __LINE__);
+		exit(-1);
+	}
+
+	FILE *temp_file = fopen(".todo.temp", "w");
+	if (temp_file == NULL) {
+		fprintf(stderr, "Could not open the temp file.\nDebug information: File: %s; Line: %i\n", __FILE__, __LINE__);
+		exit(-1);
+	}
+
+	size_t len;
+	char *line;
+
+	index--;
+	int current = 0;
+
+	while(getline(&line, &len, file) != -1) {
+		if(current != index) {
+			fprintf(temp_file, "%s", line);
+		}
+		current++;
+	}
+
+	fclose(file);
+	fclose(temp_file);
+
+	remove(FILE_NAME);
+	rename(".todo.temp", FILE_NAME);
+
 }
 
