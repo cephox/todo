@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 
 void print_todo() {
 
-	printf("Line | Done | Priority | Thing to do\n");
+	printf("Index | Done | Priority | Thing to do\n");
 
 	FILE *file = fopen(FILE_NAME, "r");
 	if (file == NULL) {
@@ -75,7 +75,7 @@ void print_todo() {
 
 		char *d = done ? "Yes" : "No";
 
-		printf("%-7i%-7s%-11i%s\n", index, d, priority, current);
+		printf("%-8i%-7s%-11i%s\n", index, d, priority, current);
 		index++;
 
 	}
