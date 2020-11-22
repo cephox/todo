@@ -40,6 +40,10 @@ void print_todo() {
 	printf("Index | Done | Priority | Thing to do\n");
 
 	FILE *file = fopen(FILE_NAME, "r");
+	if (file == NULL) {
+		fprintf(stderr, "Could not open the todo file.\nDebug information: File: %s; Line: %i\n", __FILE__, __LINE__);
+		exit(-1);
+	}
 
 	char *line = NULL;
 	size_t len = 0;
