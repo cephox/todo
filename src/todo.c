@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 		else
 			add_todo(argv[2], 1);
 	} else if(strcmp(argv[1], "remove") == 0) {
-		//	remove_todo((int) argv[2]);
+		remove_todo(atoi(argv[2]));
 	}
 
 	return 0;
@@ -86,7 +86,6 @@ void add_todo(char *text, int priority) {
 		fprintf(stderr, "Could not open the todo file.\nDebug information: File: %s; Line: %i\n", __FILE__, __LINE__);
 		exit(-1);
 	}
-	char *temp[1000000];
 
 	fprintf(file, "0|%i|%s\n", priority, text);
 	fclose(file);
