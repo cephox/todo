@@ -6,7 +6,7 @@
 #include <string.h>
 
 void print_help(char *name) {
-	printf("Todo:\n-----------------------------------\nTodo is a cli to manage your todo list\n\nSyntax:\n%s add \"Thing to do\" [Priority (default: 1)]\n%s remove 0\n\nAuthor: ce_phox\n", name, name);
+	printf("Todo:\n-----------------------------------\nTodo is a cli to manage your todo list\n\nSyntax:\n%s add \"Thing to do\" [Priority (default: 1)]\n%s remove <line (starting at 1)>\n\nAuthor: ce_phox\n", name, name);
 }
 
 int main(int argc, char *argv[]) {
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 
 void print_todo() {
 
-	printf("Index | Done | Priority | Thing to do\n");
+	printf("Line | Done | Priority | Thing to do\n");
 
 	FILE *file = fopen(FILE_NAME, "r");
 	if (file == NULL) {
@@ -75,7 +75,7 @@ void print_todo() {
 
 		char *d = done ? "Yes" : "No";
 
-		printf("%-8i%-7s%-11i%s\n", index, d, priority, current);
+		printf("%-7i%-7s%-11i%s\n", index, d, priority, current);
 		index++;
 
 	}
