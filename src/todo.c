@@ -6,7 +6,7 @@
 #include <string.h>
 
 void print_help(char *name) {
-	printf("Todo:\n-----------------------------------\nTodo is a cli to manage your todo list\n\nSyntax:\n%s add \"Thing to do\" [Priority (default: 1)]\n%s remove [line (starting at 1)]\n%s done [line (starting at 1)]\n\nAuthor: ce_phox\n", name, name, name);
+	printf("Todo:\n-----------------------------------\nTodo is a cli to manage your todo list\n\nSyntax:\n%s add <\"Thing to do\"> [Priority (default: 1)]\n%s remove <line (starting at 1)>\n%s done <line (starting at 1)>\n\nAuthor: ce_phox\n", name, name, name);
 }
 
 int main(int argc, char *argv[]) {
