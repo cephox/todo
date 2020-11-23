@@ -6,7 +6,7 @@
 #include <string.h>
 
 void print_help(char *name) {
-	printf("Todo:\n-----------------------------------\nTodo is a cli to manage your todo list\n\nSyntax:\n%s add \"Thing to do\" [Priority (default: 1)]\n%s remove [line (starting at 1) (default: 1)]\n%s done [line (starting at 1) (default: 1)]\n\nAuthor: ce_phox\n", name, name, name);
+	printf("Todo:\n-----------------------------------\nTodo is a cli to manage your todo list\n\nSyntax:\n%s add \"Thing to do\" [Priority (default: 1)]\n%s remove [line (starting at 1)]\n%s done [line (starting at 1)]\n\nAuthor: ce_phox\n", name, name, name);
 }
 
 int main(int argc, char *argv[]) {
@@ -29,15 +29,9 @@ int main(int argc, char *argv[]) {
 		else
 			add_todo(argv[2], 1);
 	} else if(strcmp(argv[1], "remove") == 0) {
-		if(argc == 3)
-			remove_todo(atoi(argv[2]));
-		else
-			remove_todo(1);
+		remove_todo(atoi(argv[2]));
 	} else if(strcmp(argv[1], "done") == 0) {
-		if(argc == 3)
-			done(atoi(argv[2]));
-		else
-			done(1);
+		done(atoi(argv[2]));
 	}
 
 	return 0;
@@ -121,10 +115,11 @@ void done(int index) {
 			temp = strtok(NULL, "|");
 
 			fprintf(temp_file, "1|%i|%s", priority, temp);
-
+			current++;
 			continue;
 		}
 		fprintf(temp_file, "%s", line);
+		current++;
 	}
 	fclose(file);
 	fclose(temp_file);
