@@ -1,5 +1,5 @@
 # todo
-todo is a simple command line tool to manage your own todo lists for different projects
+A simple command line tool to manage your own todo lists for different projects
 
 ## Installation
 ```bash
